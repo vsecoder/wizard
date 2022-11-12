@@ -17,7 +17,7 @@ def parse(query):
         engines=['google', 'wikipedia', 'bing', 'wikidata', 'duckduckgo', 'yahoo', 'yandex'],
     )
 
-    url = "https://searx.thegpm.org/search?"
+    url = "https://s.vsecoder.me/search?"
 
     start_time = datetime.now()
 
