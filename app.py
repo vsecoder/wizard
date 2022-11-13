@@ -1,10 +1,11 @@
-from flask import Flask
+from flask import Flask, Response
 from flask import render_template, request
 from src.parser import parse
 from src.logging import write_log
-import os
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+import imgkit
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
@@ -26,6 +27,28 @@ def searcher_page():
 
         return render_template('index.html', results=results)
     return render_template('index.html')
+
+
+@app.route('/preview.png', methods=['GET'])
+def preview():
+    query = request.args.get('q')
+    results = {"query": query}
+
+    preview_html = render_template('card.html', results=results)
+
+    try:
+        os.remove('card.png')
+    except OSError:
+        pass
+
+    try:
+        imgkit.from_string(preview_html, 'card.png')
+    except OSError:
+        pass
+
+    preview_img = open('card.png', 'rb').read()
+
+    return Response(preview_img, mimetype='image/png')
 
 
 @app.errorhandler(404)

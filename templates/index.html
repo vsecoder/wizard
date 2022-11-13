@@ -9,6 +9,14 @@
     content="Wizard">
   <meta name="author" content="vsecoder">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="WIZARD - новый мульти-поисковик">
+  <meta property="og:description" content="Ищите результаты сразу по многим возможным серверам поиска, от Яндекса до Гугла и др.">
+  <meta property="twitter:title" content="WIZARD - новый мульти-поисковик">
+  <meta property="twitter:description" content="Ищите результаты сразу по многим возможным серверам поиска, от Яндекса до Гугла и др.">
+  {% if results %}
+    <meta property="og:image" content="/preview.png?q={{results['query']}}">
+    <meta property="twitter:image" content="/preview.png?q={{results['query']}}">
+  {% endif %}
   <link rel="stylesheet" href="static/css/style.css">
   <link rel="shortcut icon" href="static/favicon.ico">
 </head>
@@ -21,43 +29,43 @@
   </form>
   {% if results %}
     <div class="results">
-        <div class="q">
-        <h2>Ваш запрос: {{results['query']}}</h2>
-        {% for result in results['results'] %}
-            <a href="{{result.url}}">
-                <div class="result">
-                    <p>
-                      <img src="static/circle.png" class="circle">
-                      <b>{{result.title}}</b> <span>{{result.description}}</span>
-                    </p>
-                </div>
-            </a>
-        {% endfor %}
-        {% if results['results']|length == 0 %}
-            <div class="result">
-                <p>Ничего не найдено</p>
-            </div>
-        {% endif %}
+      <div class="q">
+      <h2>Ваш запрос: {{results['query']}}</h2>
+      {% for result in results['results'] %}
+        <a href="{{result.url}}">
+          <div class="result">
+            <p>
+              <img src="static/circle.png" class="circle">
+              <b>{{result.title}}</b> <span>{{result.description}}</span>
+            </p>
+          </div>
+        </a>
+      {% endfor %}
+      {% if results['results']|length == 0 %}
+        <div class="result">
+          <p>Ничего не найдено</p>
         </div>
+      {% endif %}
+      </div>
     </div>
     <div class="ad">
       <!--В стадии обумывания-->
     </div>
     <script>
-        document.body.querySelector('.container').style.bottom = '1';
-        document.body.querySelector('.container input').value = '{{results["query"]}}';
-        document.title = 'Wizard - {{results["query"]}}'
+      document.body.querySelector('.container').style.bottom = '1';
+      document.body.querySelector('.container input').value = '{{results["query"]}}';
+      document.title = 'Wizard - {{results["query"]}}'
     </script>
     <div class="copyright">
-        <p>Страница сгенерирована за {{results["time"]}}</p>
-        <p>© 2022 <a href="http://t.me/vsecoder">@vsecoder</a></p>
+      <p>Страница сгенерирована за {{results["time"]}}</p>
+      <p>© 2022 <a href="http://t.me/vsecoder">@vsecoder</a></p>
     </div>
   {% else %}
     <script>
-        document.body.querySelector('.container').style.bottom = '0';
+      document.body.querySelector('.container').style.bottom = '0';
     </script>
     <div class="copyright">
-        <p>© 2022 <a href="http://t.me/vsecoder">@vsecoder</a></p>
+      <p>© 2022 <a href="http://t.me/vsecoder">@vsecoder</a></p>
     </div>
   {% endif %}
 </body>
