@@ -1,12 +1,14 @@
+/*
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
-
+*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Nunito',
   sans-serif;
+  vertical-align: middle;
 }
 
 html,
@@ -21,6 +23,7 @@ body {
   margin: 0;
   background: #282C2D;
   padding: 0;
+  background: url(/static/wave-dark.png);
 }
 
 .container {
@@ -152,6 +155,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 100px;
+  text-align: center;
 }
 
 h2, p, a, h1 {
@@ -163,12 +167,15 @@ h1 {
 }
 
 .result {
-  margin: 20px;
   padding: 20px;
   background: #282C2D;
   border-radius: 10px;
   box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
   transition: 1s;
+  max-width: 500px;
+  text-align: left;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .result:hover {
@@ -187,4 +194,7 @@ a {
   background: #1D86AB;
   padding: 10px;
   border-radius: 10px;
+}
+
+.ad {
 }

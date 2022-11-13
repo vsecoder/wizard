@@ -8,6 +8,8 @@ with contextlib.suppress(Exception):
 
 
 def parse(query):
+    start_time = datetime.now()
+
     session = urllib3.PoolManager()
     def_params = dict(
         category="general",
@@ -18,8 +20,6 @@ def parse(query):
     )
 
     url = "https://s.vsecoder.me/search?"
-
-    start_time = datetime.now()
 
     raw_results = json.loads(
         session.request("GET", url, fields={**def_params}).data.decode("UTF-8")

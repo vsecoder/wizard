@@ -26,7 +26,10 @@
         {% for result in results['results'] %}
             <a href="{{result.url}}">
                 <div class="result">
-                    <p><b>{{result.title}}</b> <span>{{result.description}}</span></p>
+                    <p>
+                      <img src="static/circle.png" class="circle">
+                      <b>{{result.title}}</b> <span>{{result.description}}</span>
+                    </p>
                 </div>
             </a>
         {% endfor %}
@@ -36,6 +39,9 @@
             </div>
         {% endif %}
         </div>
+    </div>
+    <div class="ad">
+      <!--В стадии обумывания-->
     </div>
     <script>
         document.body.querySelector('.container').style.bottom = '1';
